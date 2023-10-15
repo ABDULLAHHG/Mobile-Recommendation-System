@@ -23,7 +23,7 @@ button:focus {
   color: #cecac3;
 }
 
-.left-container {
+.mid-container {
   /* flex: 3 1; */
   display: flex;
   height: 400px;
@@ -198,7 +198,7 @@ i{
     flex-direction: column; /* Adjust for smaller screens */
   }
 
-  .left-container{
+  .mid-container{
 
     margin-left: 65px;
   }

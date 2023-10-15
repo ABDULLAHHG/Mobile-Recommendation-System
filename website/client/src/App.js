@@ -3,23 +3,29 @@ import {Navbar} from './components/navbar'
 import React, { useState } from "react";
 
 function App() {
-  const [isChatbotVisible , setIsChabotVisible] = useState(false);
   const [userEmail , setUserEmail] = useState("")
-  const [userPassowrd , setUserPassowrd] = useState("")
-  
-  const handleOpenChatbot = () => {
-    setIsChabotVisible(true);
-  };
+  const [userPassword , setUserPassword] = useState("")
+    
+  const register_sent = () => {
+    fetch('/Register' , {
+      method:['POST'],
+      headers:{
+        'Content-Type' :'application/json'
+      },
+      body:JSON.stringify({'userEmail' : userEmail,
+                           'UserPassword' : userPassword})
+    }).then({
+      
+    })
+  }
 
-  const handleCloseChatbot = () => {
-    setIsChabotVisible(false);
-  };
-  
   return (
   <div>
-    <Navbar/>
+    <div>
+     <Navbar/>
+    </div>
     <div className="app-container">
-      <div className="left-container">
+      <div className="mid-container">
         <div className="about-chatbot">
             <form>
               <h1>Login</h1>
@@ -35,8 +41,8 @@ function App() {
               <input 
                 type = 'password'
                 placeholder='Enter your password'
-                value = {userPassowrd}
-                onChange={(e) => setUserPassowrd(e.target.value)}
+                value = {userPassword}
+                onChange={(e) => setUserPassword(e.target.value)}
                 />
                 <button type="submit">Login</button>
           </form>           
@@ -44,6 +50,7 @@ function App() {
       </div>
     </div>
   </div>
+  
   );
 }
 
