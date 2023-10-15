@@ -1,7 +1,18 @@
-import React from 'react'
+import React from 'react';
+import './Navbar.css'; // Import the CSS file for styling
 
-export const navbar = () => {
+export const Navbar = () => {
   return (
-    <div>N</div>
-  )
-}
+    <nav className="navbar">
+      <ul className="navbar-list">
+        <li className="navbar-item"><a href="#" className="navbar-link">Home</a></li>
+        <li className="navbar-item"><a href="#" className="navbar-link">About</a></li>
+        <li className="navbar-item"><a href="#" className="navbar-link">Services</a></li>
+        <li className="navbar-item"><a href="#" className="navbar-link">Contact</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+
