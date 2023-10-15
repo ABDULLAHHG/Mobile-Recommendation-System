@@ -20,6 +20,7 @@ function App() {
     <div className="app-container">
       <div className="left-container">
         <div className="about-chatbot">
+           <form>
             <h1>Login</h1>
           
           {/* <i>
@@ -48,7 +49,7 @@ function App() {
               onChange={(e) => setUserPassowrd(e.target.value)}
               />
               <button type="submit">Login</button>
-           
+          </form>           
         </div>
       </div>
     </div>
