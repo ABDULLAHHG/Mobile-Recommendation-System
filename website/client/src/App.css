@@ -193,15 +193,22 @@ i{
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1280px) {
   .app-container {
     flex-direction: column; /* Adjust for smaller screens */
   }
-  
-  .left-container, .left-form-container {
-    margin: 0; /* Add margin for spacing on smaller screens */
+
+  .left-container{
+
+    margin-left: 65px;
   }
- 
+  .about-chatbot {
+    height: auto;
+    margin-left: -50px;
+
+  }
+  
+  
 
   .right-container {
     display: none; 
