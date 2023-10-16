@@ -13,7 +13,7 @@ function App() {
         'Content-Type' :'application/json'
       },
       body:JSON.stringify({'userEmail' : userEmail,
-                           'UserPassword' : userPassword})
+                           'userPassword' : userPassword})
     }).then({
       
     })
@@ -27,7 +27,6 @@ function App() {
     <div className="app-container">
       <div className="mid-container">
         <div className="about-chatbot">
-            <form>
               <h1>Login</h1>
               <h3 id = 'formleft'>Please Enter Details</h3>
           
@@ -44,8 +43,7 @@ function App() {
                 value = {userPassword}
                 onChange={(e) => setUserPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
-          </form>           
+                <button type="submit" onClick={register_sent}>Login</button>
         </div>
       </div>
     </div>

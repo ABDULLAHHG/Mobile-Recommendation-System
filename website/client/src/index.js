@@ -14,3 +14,8 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+// may i need it 
+
+// "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+//     "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
