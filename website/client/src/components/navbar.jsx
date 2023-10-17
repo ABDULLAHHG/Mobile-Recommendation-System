@@ -9,6 +9,9 @@ export const Navbar = () => {
         <li className="navbar-item"><a href="#" className="navbar-link">About</a></li>
         <li className="navbar-item"><a href="#" className="navbar-link">Services</a></li>
         <li className="navbar-item"><a href="#" className="navbar-link">Contact</a></li>
+        <li className="navbar-item"><a href="#" className="navbar-link">Login</a></li>
+        <li className="navbar-item"><a href="Register.js" className="navbar-link">Register</a></li>
+
       </ul>
     </nav>
   );
