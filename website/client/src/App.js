@@ -1,8 +1,8 @@
-import './App.css';
 import React, { useState } from "react";
-import {Header , Container , Hero} from './components/index'
+import {Header , Container , Hero } from './components/index'
+import {Home , Login , Register} from './Pages/index'
 import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
-
+import './App.css'
 function App() {
   const [userEmail , setUserEmail] = useState("")
   const [userPassword , setUserPassword] = useState("")
@@ -17,21 +17,25 @@ function App() {
                            'userPassword' : userPassword})
     }).then({
       
-    })
-  }
+  })}
 
   return (
-  <div>
+    <div> 
+    <div>
     <div>
       <Router>
         <Header/>
         <Container>
-        <Hero/>
+          <Routes>
+            <Route path='/Home' element={<Home/>}/>
+            <Route path='/Login' element={<Login/>}/>
+            <Route path='/Register' element={<Register/>}/>
+          </Routes>
         </Container>
       </Router>
     </div>
   </div>
-  
+  </div>
   );
 }
 

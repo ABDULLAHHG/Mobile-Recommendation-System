@@ -19,7 +19,7 @@ button:focus {
   /* background: rgba(0, 0, 0, 0.5);
    */
   background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(10, 10, 10 , 0.95));
-  overflow: hidden;
+
   color: #cecac3;
 }
 
@@ -71,7 +71,7 @@ button:focus {
 .about-chatbot h1 {
   transition: transform 0.4s ease-in-out;
   font-size: 24px;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   color: #eee;}
 .about-chatbot h1:hover{
   transform: scale(1.1);
@@ -87,6 +87,8 @@ button:focus {
 .about-chatbot p {
   font-size: 16px;
   /* color: #ccc; */
+  transform: translate(10px, -50px);
+
   
 }
 i{
@@ -184,7 +186,6 @@ i{
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   z-index: 999;  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
