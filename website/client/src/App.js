@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
 import {Header , Container , Hero} from './components/index'
+import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
 
 function App() {
   const [userEmail , setUserEmail] = useState("")
@@ -22,11 +23,12 @@ function App() {
   return (
   <div>
     <div>
-      <Header/>
-      <Container>
-
-      </Container>
-
+      <Router>
+        <Header/>
+        <Container>
+        <Hero/>
+        </Container>
+      </Router>
     </div>
   </div>
   
