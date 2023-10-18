@@ -16,7 +16,7 @@ export const Header = () => {
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         
         <NavItem>
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <a className="nav-link active" aria-current="page" href="/Home">Home</a>
         </NavItem>
 
         <NavItem>
@@ -34,17 +34,25 @@ export const Header = () => {
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </NavItemDropDown>
-
+         
         <NavItem>
-          <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
+          <a className="nav-link disabled" href="#" tabIndex="4" aria-disabled="true">Disabled</a>
         </NavItem>
+
+     
       
       </ul>
       <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> 
-        <button className="btn btn-outline-success" type="submit">Search</button>
+        <input className="form-control me-2 " type="search" placeholder="Search" aria-label="Search"/> 
+        <button className="btn btn-outline-success me-5" type="submit">Search</button>
      
      </form>
+     <ul className="navbar-nav mb-2 mb-lg-0">
+
+      <NavItem>
+        <a className="nav-link active" aria-current="page" tabIndex="-1" href="/Login">Login</a>
+     </NavItem>
+    </ul>
     </div>
   </div>
 </nav>
