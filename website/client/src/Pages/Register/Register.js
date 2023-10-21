@@ -1,5 +1,5 @@
-import './Register.css';
 import React, { useState } from "react";
+import './Register.css';
 
 function Register() {
   const [userEmail , setUserEmail] = useState("")
@@ -24,7 +24,7 @@ function Register() {
   <div>
     <div className="app-container">
       <div className="mid-container">
-        <div className="about-chatbot">
+        <div className="Register">
               <h1>Register</h1>
               <h3 id = 'formleft'>Please Enter Details</h3>
           
@@ -43,20 +43,6 @@ function Register() {
                 />
                 
               <input 
-                type = 'password'
-                placeholder='Enter your password'
-                value = {userPassword}
-                onChange={(e) => setUserPassword(e.target.value)}
-                />
-            
-            <input 
-                type = 'password'
-                placeholder='Enter your password'
-                value = {userPassword}
-                onChange={(e) => setUserPassword(e.target.value)}
-                />
-            
-            <input 
                 type = 'password'
                 placeholder='Enter your password'
                 value = {userPassword}

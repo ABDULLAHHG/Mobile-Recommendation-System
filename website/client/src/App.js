@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {Header , Container , Hero } from './components/index'
 import {Home , Login , Register} from './Pages/index'
 import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
-import './App.css'
 function App() {
   const [userEmail , setUserEmail] = useState("")
   const [userPassword , setUserPassword] = useState("")
