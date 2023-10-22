@@ -20,9 +20,9 @@ export function Login() {
   
     return (
     <div>
-      <div className="app-container">
-        <div className="mid-container">
-          <div className="about-chatbot">
+      <div className="Login-app-container">
+        <div className="Login-mid-container">
+          <div className="Login">
                 <h1>Login</h1>
                 <h3 id = 'formleft'>Please Enter Details</h3>
             

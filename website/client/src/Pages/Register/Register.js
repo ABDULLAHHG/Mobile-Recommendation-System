@@ -13,10 +13,11 @@ function Register() {
       headers:{
         'Content-Type' :'application/json'
       },
-      body:JSON.stringify({'userEmail' : userEmail,
-                           'userPassword' : userPassword})
-    }).then({
       
+      body:JSON.stringify({'userEmail' : userEmail,
+                           'userPassword' : userPassword}),
+
+    }).then({
     })
   }
 

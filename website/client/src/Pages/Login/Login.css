@@ -13,7 +13,7 @@ button:focus {
   outline: none;
 }
 
-.app-container {
+.Login-app-container {
   display: flex;
   height: 200vh;
   /* background: rgba(0, 0, 0, 0.5);
@@ -23,7 +23,7 @@ button:focus {
   color: #cecac3;
 }
 
-.mid-container {
+.Login-mid-container {
   /* flex: 3 1; */
   display: flex;
   height: 400px;
@@ -34,7 +34,7 @@ button:focus {
   flex-direction: row;
   padding: 20px;
   padding-top: 20px;
-  margin-left: 250px;
+  margin-left: 200px;
   margin-top: 200px;
   margin-right: -400px;
   background-color: rgb(29, 32, 33);
@@ -51,7 +51,7 @@ button:focus {
   align-items: flex-start;
   flex-direction: column;
   padding: 20px;
-  margin-left: 300px;
+  margin-left: 200px;
   margin-right: 20px;
   margin-top: 100px;
   margin-right: -300px;
@@ -61,40 +61,41 @@ button:focus {
 }
 
 
-.about-chatbot {
+.Login {
   text-align: center;
   
   /* height: 200px;
   width: 200px; */
   padding-top: 20;
 }
-.about-chatbot h1 {
+.Login h1 {
   transition: transform 0.4s ease-in-out;
   font-size: 24px;
-  margin-bottom: 20px;
   color: #eee;}
-.about-chatbot h1:hover{
+.Login h1:hover{
   transform: scale(1.1);
   transition: transform 0.4s ease-in-out;
 }
 
-.about-chatbot h3 {
+.Login h3 {
   font-size: 20px;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
   color: #eee;
+  transform: translate(10px, 30px);
+
 
 }
-.about-chatbot p {
+.Login p {
   font-size: 16px;
   /* color: #ccc; */
-  transform: translate(10px, -50px);
+  transform: translate(10px, -10px);
 
   
 }
 i{
   color: #4e4d4d;
 }
-.about-chatbot input {
+.Login input {
   padding: 10px;
   font-size: 14px;
   border-color: rgb(118, 110, 97);
@@ -102,13 +103,13 @@ i{
   margin-bottom: 10px;
   width: 100%;
   max-width: 300;
-  transform: translate(10px, -110px);
+  transform: translate(10px, -40px);
   color: #ddd;
   background-color: #222;
   
 }
 
-.about-chatbot button {
+.Login button {
   background-color: #16a085;
   transition: transform 0.3s ease;
   color: #fff;
@@ -117,77 +118,20 @@ i{
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transform: translate(10px, -80px);
+  transform: translate(10px, -30px);
 }
 
-.about-chatbot button:hover {
+.Login button:hover {
   background-color: #1abc9c;
   /* transition: background-color 0.3s; */
   transform: scale(1.1);
   transition: transform 0.3s ease;
   box-shadow: #eb4e4e;
-  transform: translate(10px, -85px);
+  transform: translate(10px, -35px);
 
 
 }
 
-.left-form {
-  text-align: center;
-  /* padding-left: 350px;
-  padding-bottom: 200px; */
-  margin-right: 20px;
-}
-.left-form h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-
-.left-form input {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.left-form button {
-  background-color: #16a085;
-  /* transform: scale(1.1); */
-  transition: transform 0.3s ease;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 12px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.left-form button:hover {
-  background-color: #1abc9c;
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
-
-/* Right container (Chatbot) */
-.right-container {
-  left: 600px;
-  width: 400px;
-  height: 800px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 700px;
-  /* background-color: #f0f0f0; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
 
 .right-container.opened {
   transform: translateX(-300px); 
@@ -203,7 +147,7 @@ i{
 
     margin-left: 65px;
   }
-  .about-chatbot {
+  .Login {
     height: auto;
     margin-left: -50px;
 
