@@ -58,3 +58,13 @@ def ExtractFromGsmArena():
     print(Released)
 
 
+# https://www.kimovil.com/en/where-to-buy-xiaomi-redmi-note-13-pro-plus
+def ExtractFromKivmovil():
+    website = 'https://www.kimovil.com/en/where-to-buy-xiaomi-redmi-note-13-pro-plus'
+    cookies = dict(BCPermissionLevel='PERSONAL')
+    html = requests.get(website, headers={"User-Agent": "Mozilla/5.0"}, cookies=cookies)
+
+    soup = BeautifulSoup(html.content , 'html.parser')
+    print(soup)
+
+ExtractFromKivmovil()
