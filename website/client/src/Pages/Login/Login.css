@@ -139,11 +139,11 @@ i{
 }
 
 @media screen and (max-width: 1280px) {
-  .app-container {
+  .Login-app-container {
     flex-direction: column; /* Adjust for smaller screens */
   }
 
-  .mid-container{
+  .Login-mid-container{
 
     margin-left: 65px;
   }
