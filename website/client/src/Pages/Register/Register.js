@@ -5,6 +5,7 @@ function Register() {
   const [userEmail , setUserEmail] = useState("")
   const [userPassword , setUserPassword] = useState("")
   const [userName , setUserName] = useState("")
+  const [userAdress , setUserAdress] = useState("")
 
     
   const register_sent = () => {
@@ -14,8 +15,12 @@ function Register() {
         'Content-Type' :'application/json'
       },
       
-      body:JSON.stringify({'userEmail' : userEmail,
-                           'userPassword' : userPassword}),
+      body:JSON.stringify({
+      'userEmail' : userEmail,
+      'userAdress':userAdress,
+      'userName' : userName,
+      'userPassword' : userPassword
+    }),
 
     }).then({
     })
@@ -23,8 +28,8 @@ function Register() {
 
   return (
   <div>
-    <div className="app-container">
-      <div className="mid-container">
+    <div className="Register-app-container">
+      <div className="Register-mid-container">
         <div className="Register">
               <h1>Register</h1>
               <h3 id = 'formleft'>Please Enter Details</h3>
@@ -45,9 +50,9 @@ function Register() {
                 
               <input 
                 type = 'password'
-                placeholder='Enter your password'
-                value = {userPassword}
-                onChange={(e) => setUserPassword(e.target.value)}
+                placeholder='Enter your Adress'
+                value = {userAdress}
+                onChange={(e) => setUserAdress(e.target.value)}
                 />
             
             <input 
