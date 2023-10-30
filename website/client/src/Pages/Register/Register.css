@@ -47,7 +47,7 @@ button:focus {
 
 .Register {
   text-align: center;
-  
+
   /* height: 200px;
   width: 200px; */
   padding-top: 20;
@@ -76,19 +76,7 @@ button:focus {
 i{
   color: #4e4d4d;
 }
-.Register input {
-  padding: 10px;
-  font-size: 14px;
-  border-color: rgb(118, 110, 97);
-  border-radius: 5px;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 350px;
-  transform: translate(10px, -110px);
-  color: #ddd;
-  background-color: #222;
-  
-}
+
 
 .Register button {
   background-color: #16a085;
@@ -110,49 +98,96 @@ i{
   box-shadow: #eb4e4e;
   transform: translate(10px, -85px);
 
-
 }
 
-.left-form {
-  text-align: center;
-  /* padding-left: 350px;
-  padding-bottom: 200px; */
-  margin-right: 20px;
-}
-.left-form h1 {
-  font-size: 24px;
+
+
+
+.fullName {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
   margin-bottom: 10px;
+  margin-right: 5px;
+  max-width: 200px;
+  color: #ddd;
+  background-color: #222;
+}
+
+.lastName {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  max-width: 200px;
+  color: #ddd;
+  background-color: #222;
+  margin-left: 5px;
+}
+
+.email {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  background-color: #222;
 }
 
 
-.left-form button:hover {
-  background-color: #1abc9c;
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+.password {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  background-color: #222;
 }
 
-/* Right container (Chatbot) */
-.right-container {
-  left: 600px;
-  width: 400px;
-  height: 800px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 700px;
-  /* background-color: #f0f0f0; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  z-index: 999;  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+.cpassword {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  background-color: #222;
+}
+.address {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  background-color: #222;
 }
 
-.right-container.opened {
-  transform: translateX(-300px); 
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
+.phone {
+  padding: 10px;
+  font-size: 14px;
+  border-color: rgb(118, 110, 97);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  background-color: #222;
 }
+
+
 
 @media screen and (max-width: 1280px) {
   .Register-app-container {
