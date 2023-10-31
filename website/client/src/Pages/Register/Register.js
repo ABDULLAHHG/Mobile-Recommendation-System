@@ -94,8 +94,8 @@ function Register() {
             <input
             className="fullName"
               type="text"
-              name="fname"
-              id="fname"
+              name="fullName"
+              id="fullName"
               placeholder="First Name"
               onChange={changeHandler}
               value={user.fname}
@@ -105,14 +105,15 @@ function Register() {
               className="lastName"
 
               type="text"
-              name="lname"
-              id="lname"
+              name="lastName"
+              id="lastName"
               placeholder="Last Name"
               onChange={changeHandler}
               value={user.lname}
             />
-            <p className={basestyle.error}>{formErrors.lname}</p>
-            <p className={basestyle.error}>{formErrors.fname}</p>
+            <p className={basestyle.errorFullName}>{formErrors.fullName}</p>
+            <p className={basestyle.errorLastName}>{formErrors.lastName}</p>
+            
             <input
             className="email"
             type="email"

@@ -109,10 +109,11 @@ i{
   border-color: rgb(118, 110, 97);
   border-radius: 5px;
   margin-bottom: 10px;
-  margin-right: 5px;
   max-width: 200px;
   color: #ddd;
   background-color: #222;
+  margin-right: 5px;
+
 }
 
 .lastName {

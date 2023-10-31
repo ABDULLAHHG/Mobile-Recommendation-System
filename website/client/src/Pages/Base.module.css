@@ -12,7 +12,25 @@
 .error {
     color: red;
     text-align: left;
-    margin: auto;
+    margin: 0 0 0 220px;
     font-size: 16px;
     padding: 0px 1rem;
 }
+.errorFullName{
+    color: red;
+    margin: 0;
+    font-size: 16px;
+    padding: 0px 1rem;
+    display: inline-block;
+    width: 50%; /* Adjust the width as desired */
+}
+
+.errorLastName {
+    color: red;
+    margin: 0;
+    font-size: 16px;
+    padding: 0px 1rem;
+    display: inline-block;
+    vertical-align: top; /* Align the paragraphs to the top */
+}
+
