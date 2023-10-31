@@ -12,25 +12,67 @@
 .error {
     color: red;
     text-align: left;
-    margin: 0 0 0 220px;
-    font-size: 16px;
+    margin: 0 0 0 200px;
+    font-size: 12px;
     padding: 0px 1rem;
+
 }
 .errorFullName{
+    
     color: red;
-    margin: 0;
-    font-size: 16px;
+    margin: 0px 0px 0px 0px;
+    font-size: 12px;
     padding: 0px 1rem;
     display: inline-block;
-    width: 50%; /* Adjust the width as desired */
+    width: 39%; /* Adjust the width as desired */
+    text-align: left;
+       
 }
 
 .errorLastName {
     color: red;
-    margin: 0;
-    font-size: 16px;
+    margin: 0px 0px 0px 0px;
+    font-size: 12px;
+    padding: 0px 1rem;
+    vertical-align: top; /* Align the paragraphs to the top */
+    display: inline-block;
+    text-align: right;
+
+
+}
+
+.errorAddress {
+    color: red;
+    margin: 0px 0px 0px 0px;
+    font-size: 12px;
+    padding: 0px 1rem;
+    width: 35%; /* Adjust the width as desired */
+    display: inline-block;
+    text-align: left;
+
+
+
+}
+
+.errorPhone {
+    color: red;
+    margin: 0px 0px 0px 0px;
+    font-size: 12px;
     padding: 0px 1rem;
     display: inline-block;
-    vertical-align: top; /* Align the paragraphs to the top */
+    text-align: center;
+
+
+}
+
+.errorDate {
+    color: red;
+    margin: 0px 0px 0px 0px;
+    font-size: 12px;
+    padding: 0px 1rem;
+    display: inline-block;
+    text-align: right;
+
+
 }
 

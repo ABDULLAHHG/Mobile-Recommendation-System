@@ -80,6 +80,19 @@ function Register() {
     } else if (values.cpassword !== values.password) {
       error.cpassword = "Confirm password and password should be same";
     }
+
+
+    if (!values.address) {
+      error.address = "Address is required";
+    }
+
+    if (!values.phone) {
+      error.phone = "Phone Number is required";
+    }
+
+    if (!values.date) {
+      error.date = "Birth of Date is required";
+    }
     return error;
   };
 
@@ -92,7 +105,7 @@ function Register() {
           <form>
             <h1>Create your account</h1>
             <input
-            className="fullName"
+              className="fullName"
               type="text"
               name="fullName"
               id="fullName"
@@ -115,8 +128,8 @@ function Register() {
             <p className={basestyle.errorLastName}>{formErrors.lastName}</p>
             
             <input
-            className="email"
-            type="email"
+              className="email"
+              type="email"
               name="email"
               id="email"
               placeholder="Email"
@@ -126,8 +139,8 @@ function Register() {
             <p className={basestyle.error}>{formErrors.email}</p>
             
             <input
-            className="password"
-            type="password"
+              className="password"
+              type="password"
               name="password"
               id="password"
               placeholder="Password"
@@ -137,8 +150,8 @@ function Register() {
             <p className={basestyle.error}>{formErrors.password}</p>
             
             <input
-            className="cpassword"
-            type="password"
+              className="cpassword"
+              type="password"
               name="cpassword"
               id="cpassword"
               placeholder="Confirm Password"
@@ -146,9 +159,44 @@ function Register() {
               value={user.cpassword}
             />
             <p className={basestyle.error}>{formErrors.cpassword}</p>
+
+            <input
+              className="address"
+              type="text"
+              name="address"
+              id="fullName"
+              placeholder="Enter Address"
+              onChange={changeHandler}
+              value={user.fname}
+            />
             
+            <input
+              className="phone"
+
+              type="text"
+              name="phone"
+              id="lastName"
+              placeholder="Enter Phone Number"
+              onChange={changeHandler}
+              value={user.lname}
+            />
+            <input
+              className="date"
+
+              type="date"
+              name="date"
+              id="lastName"
+              placeholder="Last Name"
+              onChange={changeHandler}
+              value={user.lname}
+            />
+
+            <p className={basestyle.errorAddress}>{formErrors.address}</p>
+            <p className={basestyle.errorPhone}>{formErrors.phone}</p>
+            <p className={basestyle.errorDate}>{formErrors.date}</p>
+           
             
-            <button className={basestyle.button_common} onClick={signupHandler}>
+            <button onClick={signupHandler}>
               Register
             </button>
           </form>
