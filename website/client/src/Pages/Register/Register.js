@@ -172,8 +172,7 @@ function Register() {
             
             <input
               className="phone"
-
-              type="text"
+              type="tel"
               name="phone"
               id="lastName"
               placeholder="Enter Phone Number"

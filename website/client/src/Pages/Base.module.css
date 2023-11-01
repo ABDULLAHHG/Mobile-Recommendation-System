@@ -15,6 +15,9 @@
     margin: 0 0 0 200px;
     font-size: 12px;
     padding: 0px 1rem;
+    vertical-align: top; 
+    transform: translateX(-60px) translateY(-5px);
+
 
 }
 .errorFullName{
@@ -26,6 +29,8 @@
     display: inline-block;
     width: 39%; /* Adjust the width as desired */
     text-align: left;
+    vertical-align: top; /* Align the paragraphs to the top */
+    transform: translateX(-18px);
        
 }
 
@@ -34,9 +39,10 @@
     margin: 0px 0px 0px 0px;
     font-size: 12px;
     padding: 0px 1rem;
-    vertical-align: top; /* Align the paragraphs to the top */
     display: inline-block;
     text-align: right;
+    vertical-align: top; /* Align the paragraphs to the top */
+    transform: translateX(-45px);
 
 
 }
@@ -49,6 +55,8 @@
     width: 35%; /* Adjust the width as desired */
     display: inline-block;
     text-align: left;
+    vertical-align: top; /* Align the paragraphs to the top */
+    transform: translateX(65px);
 
 
 
@@ -61,6 +69,8 @@
     padding: 0px 1rem;
     display: inline-block;
     text-align: center;
+    vertical-align: top; /* Align the paragraphs to the top */
+    transform: translateX(-50px);
 
 
 }
@@ -72,6 +82,8 @@
     padding: 0px 1rem;
     display: inline-block;
     text-align: right;
+    vertical-align: top; /* Align the paragraphs to the top */
+    transform: translateX(-45px);
 
 
 }
