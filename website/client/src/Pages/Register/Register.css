@@ -133,6 +133,8 @@ i{
   margin-left: 133px;
   color: #ddd;
   background-color: #222;
+  transform: translateY(-8px);
+
 }
 
 
@@ -145,6 +147,8 @@ i{
   width: 65%;
   color: #ddd;
   background-color: #222;
+  transform: translateY(-4px);
+
 }
 
 .cpassword {
@@ -156,7 +160,10 @@ i{
   width: 65%;
   color: #ddd;
   background-color: #222;
-}
+  transform: translateY(-4px);
+
+}  
+
 
 .address {
   padding: 10px;

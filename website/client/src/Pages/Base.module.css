@@ -16,7 +16,7 @@
     font-size: 12px;
     padding: 0px 1rem;
     vertical-align: top; 
-    transform: translateX(-60px) translateY(-5px);
+    transform: translateX(-60px) translateY(-9px);
 
 
 }
@@ -30,7 +30,7 @@
     width: 39%; /* Adjust the width as desired */
     text-align: left;
     vertical-align: top; /* Align the paragraphs to the top */
-    transform: translateX(-18px);
+    transform: translateX(-18px)  translateY(-6px);
        
 }
 
@@ -42,7 +42,7 @@
     display: inline-block;
     text-align: right;
     vertical-align: top; /* Align the paragraphs to the top */
-    transform: translateX(-45px);
+    transform: translateX(-45px) translateY(-6px);
 
 
 }

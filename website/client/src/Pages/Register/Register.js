@@ -16,7 +16,6 @@ function Register() {
     date  : "",
     email: "",
     password: "",
-    cpassword: "",
   });
 
   
