@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
-const port = 3000;
+const port = 3001;
 
 // // Connet to mysql 
 // const con = mysql.createConnection({
@@ -24,6 +24,7 @@ app.post('/Register', (req , res) => {
   const userPassword = req.body.userPassword;
   const userName = req.body.userName
   const userAddress = req.body.userAdress
+  
   console.log(req.body)  
   // console.log(email)
   // Process the form data as needed

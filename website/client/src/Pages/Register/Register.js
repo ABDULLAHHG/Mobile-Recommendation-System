@@ -40,9 +40,15 @@ function Register() {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(user);
-      axios.post("http://localhost:9002/signup/", user).then((res) => {
-        alert(res.data.message);
-        navigate("/login", { replace: true });
+      axios.post("/Register", user, {
+        proxy: {
+          host: 'localhost',
+          port: 3001,
+
+        }
+      }).then((res) => {
+   
+        navigate("/Login", { replace: true });
       });
     }
   }, [formErrors]);
