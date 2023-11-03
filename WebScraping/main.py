@@ -12,11 +12,14 @@ import pandas as pd
 class ExtractFromGsmArena:
     def __init__(self):
         # for not getting banned for day 
+        # Send a request 
         time.sleep(90)
+      
+
 
     def ExtractPhone(self , link : str):
-        response = requests.get('https://m.gsmarena.com/cubot_note_40-12627.php')
-        soup = BeautifulSoup(response.content, 'html.parser')
+        self.response = requests.get(link)
+        soup = BeautifulSoup(self.response.content, 'html.parser')
         print(soup)
 
         # Extract Phone name 
@@ -45,10 +48,6 @@ class ExtractFromGsmArena:
         # Extract Phone Release Date
         Released = soup.find_all('span' , class_="specs-brief-accent").text
 
-
-
-
-
         # print the result 
         print(Phone_name)
         print(DisplaySize)
@@ -64,7 +63,10 @@ class ExtractFromGsmArena:
 
     def extractAllBrand(self , link : str = "https://www.gsmarena.com/makers.php3"):
         '''We will extract all Brand and number of device for each brand'''
+    
+        # Send a request 
         response = requests.get(link)
+        self.response = response
         soup = BeautifulSoup(response.content , 'html.parser')
         allBrandsAndNumberOfDevices = soup.find('div' , class_="st-text").find_all('a')
 
@@ -73,20 +75,59 @@ class ExtractFromGsmArena:
         allNumberOfDevices = []
         
         for brandAbdNumberOfdevice in allBrandsAndNumberOfDevices:
-            
-            # Add them in separated variables 
-            brand = brandAbdNumberOfdevice.get_text(separator=' ').split()[0]
-            numberOfDevices = brandAbdNumberOfdevice.get_text(separator=' ').split()[1]
+            print(len(brandAbdNumberOfdevice.get_text(separator=' ').split()))
+            print(brandAbdNumberOfdevice.get_text(separator=' ').split())
 
+            # for Brand that the name contains just one word  
+            if len(brandAbdNumberOfdevice.get_text(separator=' ').split()) == 3:
+                # Add them in separated variables 
+                brand = brandAbdNumberOfdevice.get_text(separator=' ').split()[0]
+                numberOfDevices = brandAbdNumberOfdevice.get_text(separator=' ').split()[1]
+            
+            # for the Brand that its name contains 2 words 
+            elif len(brandAbdNumberOfdevice.get_text(separator=' ').split()) == 4:
+                # Add them in separated variables 
+                brand = " ".join(brandAbdNumberOfdevice.get_text(separator=' ').split()[0:2])
+                numberOfDevices = brandAbdNumberOfdevice.get_text(separator=' ').split()[2]
+
+            
             # Add them to the list
             brands.append(brand)
             allNumberOfDevices.append(numberOfDevices)
-
+        
+        # Create a DataFrame that contains the Brand and Device
         df = pd.DataFrame({'Brand' : brands , 'Devices' : allNumberOfDevices})
         return df 
-
+    
+    # for save a DataFrame as csv  
     def SaveAsCsv(self , df , file_name : str):
         df.to_csv(f'WebScraping/Data/CSV/{file_name}.csv')
+
+    
+    def responseToText(self):
+        # Send a request 
+        response = self.response 
+        soup = BeautifulSoup(response.content , 'html.parser')
+        file_name = soup.find('h1').text
+        # Save the response to a file
+        with open(f"WebScraping/Data/HTML/{file_name}.html", "w") as file:
+            file.write(response.text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # https://www.kimovil.com/en/where-to-buy-xiaomi-redmi-note-13-pro-plus
 def ExtractFromKivmovil():
@@ -100,3 +141,4 @@ def ExtractFromKivmovil():
 GA = ExtractFromGsmArena()
 df = GA.extractAllBrand()
 GA.SaveAsCsv(df , 'All mobile phone brands')
+GA.responseToText()
