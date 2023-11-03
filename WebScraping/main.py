@@ -13,8 +13,7 @@ class ExtractFromGsmArena:
     def __init__(self):
         # for not getting banned for day 
         # Send a request 
-        time.sleep(90)
-      
+        pass      
 
 
     def ExtractPhone(self , link : str):
@@ -60,43 +59,57 @@ class ExtractFromGsmArena:
         print(BatteryType)
         print(Released)
 
-
-    def extractAllBrand(self , link : str = "https://www.gsmarena.com/makers.php3"):
+        # Extract Data using link Online or using Local file offline 
+    def extractAllBrand(self , link : str = "https://www.gsmarena.com/makers.php3" , 
+                        file_name = 'WebScraping/Data/HTML/All mobile phone brands.html' , 
+                        useLink : bool = 1):
         '''We will extract all Brand and number of device for each brand'''
-    
-        # Send a request 
-        response = requests.get(link)
-        self.response = response
-        soup = BeautifulSoup(response.content , 'html.parser')
+        if useLink:
+            # Send a request 
+            response = requests.get(link)
+            self.response = response
+            soup = BeautifulSoup(response.content , 'html.parser')
+        
+        else:
+            # Read the saved file with BeautifulSoup
+            with open("WebScraping/Data/HTML/All mobile phone brands.html") as file:
+                soup = BeautifulSoup(file , 'html.parser')
+
+
+
         allBrandsAndNumberOfDevices = soup.find('div' , class_="st-text").find_all('a')
 
         # Create two list one for save the Brand and another for number of device in each brand 
         brands = []
         allNumberOfDevices = []
+        linkForEachBrand = []
         
-        for brandAbdNumberOfdevice in allBrandsAndNumberOfDevices:
-            print(len(brandAbdNumberOfdevice.get_text(separator=' ').split()))
-            print(brandAbdNumberOfdevice.get_text(separator=' ').split())
-
+        # Loop through all the brands 
+        for brandAndNumberOfdevice in allBrandsAndNumberOfDevices:
             # for Brand that the name contains just one word  
-            if len(brandAbdNumberOfdevice.get_text(separator=' ').split()) == 3:
+            if len(brandAndNumberOfdevice.get_text(separator=' ').split()) == 3:
                 # Add them in separated variables 
-                brand = brandAbdNumberOfdevice.get_text(separator=' ').split()[0]
-                numberOfDevices = brandAbdNumberOfdevice.get_text(separator=' ').split()[1]
+                brand = brandAndNumberOfdevice.get_text(separator=' ').split()[0]
+                numberOfDevices = brandAndNumberOfdevice.get_text(separator=' ').split()[1]
             
             # for the Brand that its name contains 2 words 
-            elif len(brandAbdNumberOfdevice.get_text(separator=' ').split()) == 4:
+            elif len(brandAndNumberOfdevice.get_text(separator=' ').split()) == 4:
                 # Add them in separated variables 
-                brand = " ".join(brandAbdNumberOfdevice.get_text(separator=' ').split()[0:2])
-                numberOfDevices = brandAbdNumberOfdevice.get_text(separator=' ').split()[2]
+                brand = " ".join(brandAndNumberOfdevice.get_text(separator=' ').split()[0:2])
+                numberOfDevices = brandAndNumberOfdevice.get_text(separator=' ').split()[2]
 
+            # Create a link var
+            link = brandAndNumberOfdevice['href']
             
             # Add them to the list
             brands.append(brand)
             allNumberOfDevices.append(numberOfDevices)
+            linkForEachBrand.append(f"https://www.gsmarena.com/{link}")
         
         # Create a DataFrame that contains the Brand and Device
-        df = pd.DataFrame({'Brand' : brands , 'Devices' : allNumberOfDevices})
+        df = pd.DataFrame({'Brand' : brands ,
+                           'Devices' : allNumberOfDevices ,
+                           'Link' : linkForEachBrand})
         return df 
     
     # for save a DataFrame as csv  
@@ -109,6 +122,7 @@ class ExtractFromGsmArena:
         response = self.response 
         soup = BeautifulSoup(response.content , 'html.parser')
         file_name = soup.find('h1').text
+        
         # Save the response to a file
         with open(f"WebScraping/Data/HTML/{file_name}.html", "w") as file:
             file.write(response.text)
@@ -139,6 +153,5 @@ def ExtractFromKivmovil():
     print(soup)
 
 GA = ExtractFromGsmArena()
-df = GA.extractAllBrand()
+df = GA.extractAllBrand(useLink=0)
 GA.SaveAsCsv(df , 'All mobile phone brands')
-GA.responseToText()
