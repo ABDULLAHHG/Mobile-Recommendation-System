@@ -12,6 +12,7 @@ import pandas as pd
 class ExtractFromGsmArena:
     def __init__(self):
         # for not getting banned for day 
+        # time.sleep(90)
         # Send a request 
         pass      
 
@@ -63,7 +64,8 @@ class ExtractFromGsmArena:
     def extractAllBrand(self , link : str = "https://www.gsmarena.com/makers.php3" , 
                         file_name = 'WebScraping/Data/HTML/All mobile phone brands.html' , 
                         useLink : bool = 1):
-        '''We will extract all Brand and number of device for each brand'''
+        '''We will extract all `Brand` and `number of device` and `link` for each brand'''
+        
         if useLink:
             # Send a request 
             response = requests.get(link)
@@ -112,6 +114,24 @@ class ExtractFromGsmArena:
                            'Link' : linkForEachBrand})
         return df 
     
+    # To know how many pages for each brand and save it 
+    def BrandPages(self):
+        # Read DataFrame
+        df = pd.read_csv('WebScraping/Data/CSV/All mobile phone brands.csv')
+        
+        # important columns 
+        brands = df['Brand']
+        links = df['Link']
+        
+        # So we cant send more than 5 request even if we use sleep 60 sec 
+        # couse we will get baned
+        for i , link in enumerate(links):
+            time.sleep(90)
+            self.response = requests.get(link)
+            self.responseToText()
+            if i%5 ==0.0 and i != 0:
+                time.sleep(1800)
+
     # for save a DataFrame as csv  
     def SaveAsCsv(self , df , file_name : str):
         df.to_csv(f'WebScraping/Data/CSV/{file_name}.csv')
@@ -122,7 +142,7 @@ class ExtractFromGsmArena:
         response = self.response 
         soup = BeautifulSoup(response.content , 'html.parser')
         file_name = soup.find('h1').text
-        
+
         # Save the response to a file
         with open(f"WebScraping/Data/HTML/{file_name}.html", "w") as file:
             file.write(response.text)
@@ -153,5 +173,6 @@ def ExtractFromKivmovil():
     print(soup)
 
 GA = ExtractFromGsmArena()
-df = GA.extractAllBrand(useLink=0)
-GA.SaveAsCsv(df , 'All mobile phone brands')
+GA.BrandPages()
+# df = GA.extractAllBrand(useLink=0)
+# GA.SaveAsCsv(df , 'All mobile phone brands')
