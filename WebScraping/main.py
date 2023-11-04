@@ -62,7 +62,7 @@ class ExtractFromGsmArena:
 
         # Extract Data using link Online or using Local file offline 
     def extractAllBrand(self , link : str = "https://www.gsmarena.com/makers.php3" , 
-                        file_name = 'WebScraping/Data/HTML/All mobile phone brands.html' , 
+                        file_name = 'WebScraping/Data/GSMArena/HTML/All mobile phone brands.html' , 
                         useLink : bool = 1):
         '''We will extract all `Brand` and `number of device` and `link` for each brand'''
         
@@ -74,7 +74,7 @@ class ExtractFromGsmArena:
         
         else:
             # Read the saved file with BeautifulSoup
-            with open("WebScraping/Data/HTML/All mobile phone brands.html") as file:
+            with open("WebScraping/Data/GSMArena/HTML/All mobile phone brands.html") as file:
                 soup = BeautifulSoup(file , 'html.parser')
 
 
@@ -115,9 +115,9 @@ class ExtractFromGsmArena:
         return df 
     
     # To know how many pages for each brand and save it 
-    def BrandPages(self):
+    def ExtractBrandPages(self):
         # Read DataFrame
-        df = pd.read_csv('WebScraping/Data/CSV/All mobile phone brands.csv')
+        df = pd.read_csv('WebScraping/Data/GSMArena/CSV/All mobile phone brands.csv')
         
         # important columns 
         brands = df['Brand']
@@ -131,10 +131,42 @@ class ExtractFromGsmArena:
             self.responseToText()
             if i%5 ==0.0 and i != 0:
                 time.sleep(1800)
+    
+    # Scrap all link pages for scraping images and Mobile names 
+    def extractAllLinksOfBrandPages(self):
+        df = pd.read_csv('WebScraping/Data/GSMArena/CSV/All mobile phone brands.csv')
+        brands = df['Brand']
+
+        pages = []
+        brandNames = []
+
+        for i , brand in enumerate(brands):
+            # Read the saved file with BeautifulSoup
+            
+            with open(f'WebScraping/Data/GSMArena/HTML/{brands[i]} phones.html') as file:
+                soup = BeautifulSoup( file , 'html.parser')
+
+                pages.append(df['Link'][i])
+                brandNames.append(brand)
+                # There is Brand with one page only
+                try:
+                    link_pages = soup.find('div',  class_="nav-pages").find_all('a')
+                    for link_page in link_pages:
+                        pages.append(f"https://www.gsmarena.com/{link_page['href']}")
+                        brandNames.append(brand)
+                except:
+                    continue
+
+
+
+        pages = pd.DataFrame({'Brand' : brandNames , 'Link' : pages})
+        
+        # Save it as CSV 
+        self.SaveAsCsv(pages , "Pages for each Brand.csv")
 
     # for save a DataFrame as csv  
     def SaveAsCsv(self , df , file_name : str):
-        df.to_csv(f'WebScraping/Data/CSV/{file_name}.csv')
+        df.to_csv(f'WebScraping/Data/GSMArena/CSV/{file_name}.csv')
 
     
     def responseToText(self):
@@ -147,19 +179,7 @@ class ExtractFromGsmArena:
         with open(f"WebScraping/Data/HTML/{file_name}.html", "w") as file:
             file.write(response.text)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
 
 
 
@@ -173,6 +193,6 @@ def ExtractFromKivmovil():
     print(soup)
 
 GA = ExtractFromGsmArena()
-GA.BrandPages()
+# GA.BrandPages()
 # df = GA.extractAllBrand(useLink=0)
 # GA.SaveAsCsv(df , 'All mobile phone brands')
