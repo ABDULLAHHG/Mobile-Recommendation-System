@@ -13,6 +13,7 @@ function Register() {
     fullName: "",
     lastName: "",
     address : "",
+    phone : "",
     date  : "",
     email: "",
     password: "",
@@ -169,30 +170,31 @@ function Register() {
               className="address"
               type="text"
               name="address"
-              id="fullName"
+              id="address" 
+
               placeholder="Enter Address"
               onChange={changeHandler}
-              value={user.fname}
+              value={user.address}
             />
             
             <input
               className="phone"
               type="tel"
               name="phone"
-              id="lastName"
+              id="phone"
               placeholder="Enter Phone Number"
               onChange={changeHandler}
-              value={user.lname}
+              value={user.phone}
             />
             <input
               className="date"
 
               type="date"
               name="date"
-              id="lastName"
-              placeholder="Last Name"
+              id="date"
+              placeholder="Date"
               onChange={changeHandler}
-              value={user.lname}
+              value={user.date}
             />
 
             <p className={basestyle.errorAddress}>{formErrors.address}</p>
