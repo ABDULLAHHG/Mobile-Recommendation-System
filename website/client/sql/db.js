@@ -25,8 +25,9 @@ app.post('/Register', (req , res) => {
   const userPassword = req.body.password;
   const userFullName = req.body.fullName
   const userLastName = req.body.lastName
-  const userAddress = req.body.userAdress
+  const userAddress = req.body.address
   const userDate = req.body.date;
+  const phone_number = req.body.phone;
   
   console.log(req.body)  
 
@@ -46,11 +47,16 @@ app.post('/Register', (req , res) => {
   const hash = crypto.createHash('sha256');
   hash.update(userPassword)
   const password = hash.digest('hex');
-  var sql = "INSERT INTO user-registration (full_name , email , password_hash,date_of_brith , address , phone_number) VALUES ?"
+  var sql = `INSERT INTO user-registration (full_name , email , password_hash,date_of_brith , address , phone_number) VALUES (${userName} , ${userEmail} , ${password} , ${userDate} , ${userAddress} , ${phone_number})`
 
-  var values = [userName , userEmail , password , userDate , userAddress]
-   con.connect(function(err) {
-     if (err) throw err;
+  var values = 
+  con.connect(function(err) {
+    
+con.query(sql,[values] , function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+  });
+ if (err) throw err;
      console.log("Connected!");
      });
   
