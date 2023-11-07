@@ -43,22 +43,30 @@ app.post('/Register', (req , res) => {
   // Create UserName (userFullName + userLastName)
   userName = userFullName + " " + userLastName 
 
-
+  // Create a hash Object
   const hash = crypto.createHash('sha256');
+  
+  // Convert password to sha256
   hash.update(userPassword)
-  const password = hash.digest('hex');
-  var sql = `INSERT INTO user-registration (full_name , email , password_hash,date_of_brith , address , phone_number) VALUES (${userName} , ${userEmail} , ${password} , ${userDate} , ${userAddress} , ${phone_number})`
+  console.log(userPassword)
 
-  var values = 
+  // convert password to hex 
+  const password = hash.digest('hex');
+  
+  // Build sql insert statment with values to insert into database user-registration table
+  var sql = `INSERT INTO user-registration (full_name , email , password_hash,date_of_brith , address , phone_number) VALUES (${userName} , ${userEmail} , ${password} , ${userDate} , ${userAddress} , ${phone_number})`
+  
+  // connect to mysql 
   con.connect(function(err) {
-    
-con.query(sql,[values] , function (err, result) {
+    // exceute the sql code  
+    con.query(sql , function (err, result) {
+      if (err) throw err;
+        console.log("1 record inserted");
+    });
+
     if (err) throw err;
-    console.log("1 record inserted");
+      console.log("Connected!");
   });
- if (err) throw err;
-     console.log("Connected!");
-     });
   
 
 });
