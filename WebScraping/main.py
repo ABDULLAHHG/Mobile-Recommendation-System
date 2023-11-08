@@ -131,38 +131,62 @@ class ExtractFromGsmArena:
             self.responseToText()
             if i%5 ==0.0 and i != 0:
                 time.sleep(1800)
-    
-    # Scrap all link pages for scraping images and Mobile names 
+        
+
+
+    # Extract all link pages for scraping images and Mobile names 
     def extractAllLinksOfBrandPages(self):
         df = pd.read_csv('WebScraping/Data/GSMArena/CSV/All mobile phone brands.csv')
         brands = df['Brand']
 
         pages = []
         brandNames = []
+        pageNumber = []
 
         for i , brand in enumerate(brands):
             # Read the saved file with BeautifulSoup
             
             with open(f'WebScraping/Data/GSMArena/HTML/{brands[i]} phones.html') as file:
                 soup = BeautifulSoup( file , 'html.parser')
-
+                # add the first link and brand to list 
                 pages.append(df['Link'][i])
                 brandNames.append(brand)
+                pageNumber.append(1)
                 # There is Brand with one page only
                 try:
                     link_pages = soup.find('div',  class_="nav-pages").find_all('a')
                     for link_page in link_pages:
                         pages.append(f"https://www.gsmarena.com/{link_page['href']}")
                         brandNames.append(brand)
+                        pageNumber.append(link_page.text)
+
+                # Continue loop 
                 except:
                     continue
 
 
-
-        pages = pd.DataFrame({'Brand' : brandNames , 'Link' : pages})
-        
+        # Save it as DataFrame 
+        pages = pd.DataFrame({'Brand' : brandNames , 'Link' : pages , 'Page Number':pageNumber})
         # Save it as CSV 
-        self.SaveAsCsv(pages , "Pages for each Brand.csv")
+        self.SaveAsCsv(pages , "Pages for each Brand")
+
+
+    def ExtractAllBrandPages(self):
+        # Read DataFrame
+        df = pd.read_csv('WebScraping/Data/GSMArena/CSV/Pages for each Brand.csv')
+        
+        # important columns 
+        brands = df['Brand']
+        links = df['Link']
+        
+        # So we cant send more than 5 request even if we use sleep 60 sec 
+        # couse we will get baned
+        for i , link in enumerate(links):
+            time.sleep(90)
+            self.response = requests.get(link)
+            self.responseToText()
+            if i%5 ==0.0 and i != 0:
+                time.sleep(1800)
 
     # for save a DataFrame as csv  
     def SaveAsCsv(self , df , file_name : str):
@@ -196,3 +220,4 @@ GA = ExtractFromGsmArena()
 # GA.BrandPages()
 # df = GA.extractAllBrand(useLink=0)
 # GA.SaveAsCsv(df , 'All mobile phone brands')
+GA.extractAllLinksOfBrandPages()
