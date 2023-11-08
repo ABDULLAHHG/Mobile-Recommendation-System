@@ -43,10 +43,10 @@ app.post('/Register', (req , res) => {
   // Create UserName (userFullName + userLastName)
   userName = userFullName + " " + userLastName 
 
-  // Create a hash Object
+  // // Create a hash Object
   const hash = crypto.createHash('sha256');
   
-  // Convert password to sha256
+  // // Convert password to sha256
   hash.update(userPassword)
   console.log(userPassword)
 
@@ -54,7 +54,7 @@ app.post('/Register', (req , res) => {
   const password = hash.digest('hex');
   
   // Build sql insert statment with values to insert into database user-registration table
-  var sql = `INSERT INTO user-registration (full_name , email , password_hash,date_of_brith , address , phone_number) VALUES (${userName} , ${userEmail} , ${password} , ${userDate} , ${userAddress} , ${phone_number})`
+  var sql = `INSERT INTO user_registrations (full_name , email , password_hash, date_of_birth , address , phone_number) VALUES ('${userName}' , '${userEmail}' , '${password}' , '${userDate}' , '${userAddress}' ,'${phone_number}')`
   
   // connect to mysql 
   con.connect(function(err) {
