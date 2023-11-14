@@ -114,6 +114,7 @@ class ExtractFromGsmArena:
                            'Link' : linkForEachBrand})
         return df 
     
+    # Extract Brands main pages
     # To know how many pages for each brand and save it 
     def ExtractBrandPages(self):
         # Read DataFrame
@@ -148,10 +149,12 @@ class ExtractFromGsmArena:
             
             with open(f'WebScraping/Data/GSMArena/HTML/{brands[i]} phones.html') as file:
                 soup = BeautifulSoup( file , 'html.parser')
+
                 # add the first link and brand to list 
                 pages.append(df['Link'][i])
                 brandNames.append(brand)
                 pageNumber.append(1)
+
                 # There is Brand with one page only
                 try:
                     link_pages = soup.find('div',  class_="nav-pages").find_all('a')
@@ -174,7 +177,7 @@ class ExtractFromGsmArena:
     def ExtractAllBrandPages(self):
         # Read DataFrame
         df = pd.read_csv('WebScraping/Data/GSMArena/CSV/Pages for each Brand.csv')
-        
+        df = df[(df['Page Number'] > 1) & (df.index > 355)]
         # important columns 
         brands = df['Brand']
         links = df['Link']
@@ -184,9 +187,14 @@ class ExtractFromGsmArena:
         for i , link in enumerate(links):
             time.sleep(90)
             self.response = requests.get(link)
+            print(link)
             self.responseToText()
             if i%5 ==0.0 and i != 0:
                 time.sleep(1800)
+        
+
+
+
 
     # for save a DataFrame as csv  
     def SaveAsCsv(self , df , file_name : str):
@@ -198,9 +206,9 @@ class ExtractFromGsmArena:
         response = self.response 
         soup = BeautifulSoup(response.content , 'html.parser')
         file_name = soup.find('h1').text
-
+        page_number = soup.find('div',  class_="nav-pages").find('strong').text
         # Save the response to a file
-        with open(f"WebScraping/Data/HTML/{file_name}.html", "w") as file:
+        with open(f"WebScraping/Data/GSMArena/HTML/{file_name} Page{page_number}.html", "w") as file:
             file.write(response.text)
 
             
@@ -220,4 +228,4 @@ GA = ExtractFromGsmArena()
 # GA.BrandPages()
 # df = GA.extractAllBrand(useLink=0)
 # GA.SaveAsCsv(df , 'All mobile phone brands')
-GA.extractAllLinksOfBrandPages()
+GA.ExtractAllBrandPages()
