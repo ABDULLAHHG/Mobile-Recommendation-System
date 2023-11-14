@@ -7,8 +7,11 @@ def CreateDirectoryForEachBrand():
     for brand in brands:
         os.mkdir(f'Data/GSMArena/HTML/{brand}') 
 
-# Rename a file
-os.rename("old_name.txt", "new_name.txt")
+def renameMainPage():
+    df = pd.read_csv("WebScraping/Data/GSMArena/CSV/All mobile phone brands.csv")
+    brands = df.Brand
+    for brand in brands:
+        # Rename a file
+        os.rename(f"WebScraping/Data/GSMArena/HTML/{brand} phones.html", f"WebScraping/Data/GSMArena/HTML/{brand} phones Page1.html")
 
-# Rename a file with a specific path
-os.rename("/my/path/to/old_name.txt", "/my/path/to/new_name.txt")
+renameMainPage()
