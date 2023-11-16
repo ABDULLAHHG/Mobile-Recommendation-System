@@ -14,4 +14,3 @@ def renameMainPage():
         # Rename a file
         os.rename(f"WebScraping/Data/GSMArena/HTML/{brand} phones.html", f"WebScraping/Data/GSMArena/HTML/{brand} phones Page1.html")
 
-renameMainPage()
