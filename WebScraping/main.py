@@ -210,6 +210,21 @@ class ExtractFromGsmArena:
         # Save the response to a file
         with open(f"WebScraping/Data/GSMArena/HTML/{file_name} Page{page_number}.html", "w") as file:
             file.write(response.text)
+    
+
+    def extractPhomeNamesAndCorpus(self):
+        df = pd.read_csv('WebScraping/Data/GSMArena/CSV/Pages for each Brand.csv')
+        brands = df.Brand
+        pages = df['Page Number']
+        for index , brand in enumerate(brands):
+            with open(f"WebScraping/Data/GSMArena/HTML/{brand}/{brand} phones Page{pages[index]}.html") as file:
+                soup = BeautifulSoup(file , 'html.parser')
+                devices = soup.find_all('strong')
+                for device in devices:
+                    print(device.text)
+
+
+    
 
             
 
@@ -225,7 +240,12 @@ def ExtractFromKivmovil():
     print(soup)
 
 GA = ExtractFromGsmArena()
+
 # GA.BrandPages()
 # df = GA.extractAllBrand(useLink=0)
 # GA.SaveAsCsv(df , 'All mobile phone brands')
-GA.ExtractAllBrandPages()
+#GA.ExtractAllBrandPages()
+
+
+
+GA.extractPhomeNamesAndCorpus()
