@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import pandas as pd 
+import numpy as np
 
 # https://m.gsmarena.com , https://www.kimovil.com/en/ 
 # https://www.kimovil.com/en/where-to-buy-xiaomi-redmi-note-13-pro-plus
@@ -189,6 +190,7 @@ class ExtractFromGsmArena:
             self.response = requests.get(link)
             print(link)
             self.responseToText()
+            
             if i%5 ==0.0 and i != 0:
                 time.sleep(1800)
         
@@ -207,6 +209,7 @@ class ExtractFromGsmArena:
         soup = BeautifulSoup(response.content , 'html.parser')
         file_name = soup.find('h1').text
         page_number = soup.find('div',  class_="nav-pages").find('strong').text
+        
         # Save the response to a file
         with open(f"WebScraping/Data/GSMArena/HTML/{file_name} Page{page_number}.html", "w") as file:
             file.write(response.text)
@@ -216,12 +219,43 @@ class ExtractFromGsmArena:
         df = pd.read_csv('WebScraping/Data/GSMArena/CSV/Pages for each Brand.csv')
         brands = df.Brand
         pages = df['Page Number']
+
+        # Create empty list to save Data 
+        device_list = []
+        brand_list = []
+        corpus_list = []
+
+
         for index , brand in enumerate(brands):
             with open(f"WebScraping/Data/GSMArena/HTML/{brand}/{brand} phones Page{pages[index]}.html") as file:
                 soup = BeautifulSoup(file , 'html.parser')
-                devices = soup.find_all('strong')
+                devices = soup.find("div" , class_="section-body").find_all('strong')
+
                 for device in devices:
-                    print(device.text)
+                    device_list.append(device.text)
+                    brand_list.append(brand)
+                
+                corpuses = soup.find('div' , class_="section-body").find_all("img")
+                
+                for corpus in corpuses:
+                    try:
+                        corpus_list.append(corpus["title"])
+                    except:
+                        corpus_list.append(np.NaN)
+                
+        # Create a dict of Saving data
+        data = {"Device" : device_list,
+                "Brand" : brand_list,
+                "Corpus" : corpus_list}
+
+        df = pd.DataFrame(data)
+        self.SaveAsCsv(df , "Devices")
+
+
+
+
+
+
 
 
     
