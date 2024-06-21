@@ -34,7 +34,7 @@ button:focus {
   flex-direction: row;
   padding: 20px;
   padding-top: 20px;
-  margin: 100px auto;
+  margin: 100px auto auto auto;
   background-color: rgb(29, 32, 33);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   align-content: space-around;
@@ -141,10 +141,7 @@ i{
     flex-direction: column; /* Adjust for smaller screens */
   }
 
-  .Login-mid-container{
 
-    margin-left: 65px;
-  }
   .Login {
     height: auto;
     margin-left: -50px;

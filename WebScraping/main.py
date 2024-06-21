@@ -202,7 +202,7 @@ class ExtractFromGsmArena:
     def SaveAsCsv(self , df , file_name : str):
         df.to_csv(f'WebScraping/Data/GSMArena/CSV/{file_name}.csv')
 
-    
+    # its just convert to html
     def responseToText(self):
         # Send a request 
         response = self.response 
